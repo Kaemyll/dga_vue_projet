@@ -11,10 +11,8 @@ export const productsDB = {
       brand: "Apple",
       category: "smartphones",
       thumbnail: "https://via.placeholder.com/800x600",
-      images: [
-        "https://via.placeholder.com/600x600",
-        "https://via.placeholder.com/600x600",
-        "https://via.placeholder.com/600x600",
+      image: [
+        "https://via.placeholder.com/600x600"
       ],
     },
     {
@@ -28,10 +26,8 @@ export const productsDB = {
       brand: "Apple",
       category: "smartphones",
       thumbnail: "https://via.placeholder.com/800x600",
-      images: [
-        "https://via.placeholder.com/600x600",
-        "https://via.placeholder.com/600x600",
-        "https://via.placeholder.com/600x600",
+      image: [
+        "https://via.placeholder.com/600x600"
       ],
     },
     {
@@ -45,10 +41,8 @@ export const productsDB = {
       brand: "Apple",
       category: "smartphones",
       thumbnail: "https://via.placeholder.com/800x600",
-      images: [
-        "https://via.placeholder.com/600x600",
-        "https://via.placeholder.com/600x600",
-        "https://via.placeholder.com/600x600",
+      image: [
+        "https://via.placeholder.com/600x600"
       ],
     },
     {
@@ -62,10 +56,8 @@ export const productsDB = {
       brand: "Samsung",
       category: "smartphones",
       thumbnail: "https://via.placeholder.com/800x600",
-      images: [
-        "https://via.placeholder.com/600x600",
-        "https://via.placeholder.com/600x600",
-        "https://via.placeholder.com/600x600",
+      image: [
+        "https://via.placeholder.com/600x600"
       ],
     },
     // ... autres produits
