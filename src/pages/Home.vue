@@ -1,9 +1,8 @@
 <script setup>
 import { ref } from "vue";
-import Navbar from "../components/Navbar.vue";
-import Hero from "../components/Hero.vue";
-import ProductList from "../components/ProductList.vue";
-import Footer from "../components/Footer.vue";
+import MainNavbar from "../components/Navbar.vue";
+import MainView from "../components/MainView.vue";
+import MainFooter from "../components/Footer.vue";
 
 // Déclaration des données réactives
 const parentMessage = ref("Message du parent");
@@ -17,13 +16,10 @@ function handleChildEvent(data) {
 
 <template>
   <div className="flex flex-col min-h-screen">
-    <Navbar :message="parentMessage" @childEvent="handleChildEvent" />
-    <p className="text-center">{{ childMessage }}</p>
-    <Hero />
-    <ProductList />
-    <Footer />
+    <MainNavbar />
+    <MainView />
+    <MainFooter />
     <!-- Affiche le message de l'enfant -->
-
   </div>
 </template>
 

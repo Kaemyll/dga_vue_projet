@@ -1,14 +1,19 @@
+
 <template>
-    <section className="bg-blue-500 p-6 text-center text-white mx-auto">
-        <h2 className="text-lg underline m-2">Entête</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </section>
+  <section class="bg-blue-300 p-6 m-2 text-justify flex-grow overflow-y-auto">
+    <h2 class="text-lg text-center underline m-2 font-bold">HERO</h2>
+    <img :src="backgroundImage" alt="Hero Background" class="mx-auto" />
+  </section>
 </template>
+
+<script setup>
+import { defineProps } from 'vue';
+
+// Déclaration de la prop pour recevoir l'image de fond
+const props = defineProps({
+  backgroundImage: {
+    type: String,
+    required: true
+  }
+});
+</script>

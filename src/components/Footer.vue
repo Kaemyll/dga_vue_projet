@@ -1,7 +1,7 @@
 <template>
   <!-- Footer -->
-  <footer class="bg-yellow-500 p-6 text-center text-white mt-auto">
-    <p>Footer</p>
+  <footer class="bg-gray-800 p-6 text-center text-white mt-auto sticky bottom-0">
+    <p>DGA, 2024 - Formation ORSYS vue.js</p>
   </footer>
 </template>
 
