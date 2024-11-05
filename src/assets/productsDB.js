@@ -51,6 +51,23 @@ export const productsDB = {
         "https://via.placeholder.com/600x600",
       ],
     },
+    {
+      id: 4,
+      title: "Galaxy A54",
+      description: "Mon téléphone ! C'est pas une pomme...",
+      price: 429,
+      discountPercentage: 5.25,
+      rating: 5.00,
+      stock: 666,
+      brand: "Samsung",
+      category: "smartphones",
+      thumbnail: "https://via.placeholder.com/800x600",
+      images: [
+        "https://via.placeholder.com/600x600",
+        "https://via.placeholder.com/600x600",
+        "https://via.placeholder.com/600x600",
+      ],
+    },
     // ... autres produits
   ],
   total: 100,
