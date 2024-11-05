@@ -1,15 +1,3 @@
-<script setup>
-import { ref } from 'vue';
-
-// État réactif pour suivre l'état de connexion
-const isLoggedIn = ref(false);
-
-// Méthode pour basculer l'état de connexion
-const toggleLogin = () => {
-  isLoggedIn.value = !isLoggedIn.value;
-};
-</script>
-
 <template>
   <section class="bg-gray-800 p-4 sticky top-0">
     <div class="container mx-auto grid grid-cols-9 gap-4 items-center">
@@ -62,3 +50,15 @@ const toggleLogin = () => {
     </div>
   </section>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+
+// État réactif pour suivre l'état de connexion
+const isLoggedIn = ref(false);
+
+// Méthode pour basculer l'état de connexion
+const toggleLogin = () => {
+  isLoggedIn.value = !isLoggedIn.value;
+};
+</script>

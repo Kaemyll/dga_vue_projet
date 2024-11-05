@@ -55,6 +55,13 @@
             Stock : {{ product.stock > 0 ? product.stock : "Rupture de stock" }}
           </span>
         </div>
+        <!-- Bouton Ajouter au panier -->
+        <button
+          @click="$emit('add-to-cart', product)"
+          class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-500 transition-colors duration-200"
+        >
+          Ajouter au panier
+        </button>
       </div>
     </div>
   </section>
