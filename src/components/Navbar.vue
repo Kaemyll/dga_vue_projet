@@ -16,7 +16,7 @@
         <button
           class="px-4 py-2 bg-gray-700 text-gray-300 rounded hover:bg-gray-600 hover:text-white transition-colors duration-200"
         >
-          <router-link :to="{name: 'Boutique'}"> Boutique </router-link>
+          <router-link :to="{ name: 'Boutique' }"> Boutique </router-link>
         </button>
         <button
           class="px-4 py-2 bg-gray-700 text-gray-300 rounded hover:bg-gray-600 hover:text-white transition-colors duration-200"
@@ -32,7 +32,7 @@
 
       <!-- Bouton de connexion/déconnexion aligné à droite -->
       <div class="flex space-x-4 col-start-8 col-end-9">
-        <button
+        <!-- <button
           v-if="!isLoggedIn"
           @click="toggleLogin"
           class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-blue-600 hover:text-white transition-colors duration-200"
@@ -45,6 +45,12 @@
           class="px-4 py-2 bg-green-600 text-white rounded hover:bg-blue-600 transition-colors duration-200"
         >
           Connecté
+        </button> -->
+        <button @click="toggleAuth" :class="[
+      'px-4 py-2 rounded font-semibold text-white transition-colors duration-200',
+      isAuthenticated ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'
+    ]">
+          {{ isAuthenticated ? "Déconnexion" : "Connexion" }}
         </button>
       </div>
     </div>
@@ -52,13 +58,25 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
-// État réactif pour suivre l'état de connexion
-const isLoggedIn = ref(false);
+// // État réactif pour suivre l'état de connexion
+// const isLoggedIn = ref(false);
 
-// Méthode pour basculer l'état de connexion
-const toggleLogin = () => {
-  isLoggedIn.value = !isLoggedIn.value;
-};
+// // Méthode pour basculer l'état de connexion
+// const toggleLogin = () => {
+//   isLoggedIn.value = !isLoggedIn.value;
+// };
+
+const isAuthenticated = ref(localStorage.getItem('auth') === 'true');
+
+function toggleAuth() {
+    if (isAuthenticated.value) {
+        localStorage.removeItem('auth');
+    } else {
+        localStorage.setItem('auth', 'true');
+    }
+    isAuthenticated.value = !isAuthenticated.value;
+}
+
 </script>
