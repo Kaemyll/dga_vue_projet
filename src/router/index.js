@@ -13,13 +13,6 @@ const routes = [
     path: "/user",
     name: "Utilisateur",
     component: User,
-    // beforeEach: (to, from, next) => {
-    //   if (isUserAuthentificated()) {
-    //     next();
-    //   } else {
-    //     next("/");
-    //   }
-    // },
   },
   {
     path: "/product/:id",

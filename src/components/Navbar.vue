@@ -58,7 +58,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 
 // // État réactif pour suivre l'état de connexion
 // const isLoggedIn = ref(false);
@@ -68,15 +68,18 @@ import { ref, computed } from "vue";
 //   isLoggedIn.value = !isLoggedIn.value;
 // };
 
-const isAuthenticated = ref(localStorage.getItem('auth') === 'true');
+const isAuthenticated = inject('isAuthenticated');
+const toggleAuth = inject('toggleAuth');
 
-function toggleAuth() {
-    if (isAuthenticated.value) {
-        localStorage.removeItem('auth');
-    } else {
-        localStorage.setItem('auth', 'true');
-    }
-    isAuthenticated.value = !isAuthenticated.value;
-}
+// const isAuthenticated = ref(localStorage.getItem('auth') === 'true');
+
+// function toggleAuth() {
+//     if (isAuthenticated.value) {
+//         localStorage.removeItem('auth');
+//     } else {
+//         localStorage.setItem('auth', 'true');
+//     }
+//     isAuthenticated.value = !isAuthenticated.value;
+// }
 
 </script>
