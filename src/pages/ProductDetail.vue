@@ -19,7 +19,7 @@
   <script setup>
   import { ref, onMounted } from "vue";
   import { useRoute } from "vue-router";
-  import { productsDB } from "../assets/productsDB";
+  import productsDB from "../assets/productsDB.json";
   
   // Récupération de la route active pour obtenir l'ID du produit
   const route = useRoute();

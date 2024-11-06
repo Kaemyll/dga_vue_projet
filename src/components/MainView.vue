@@ -1,7 +1,7 @@
 <script setup>
 import MainHero from "../components/Hero.vue";
 import ProductList from "../components/ProductList.vue";
-import { productsDB } from "../assets/productsDB";
+import productsDB from "../assets/productsDB.json";
 import { mainDB } from "../assets/mainDB";
 
 // Déclaration des données en tant que constantes

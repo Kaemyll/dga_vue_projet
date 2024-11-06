@@ -21,8 +21,9 @@
         placeholder="Nom du produit"
         required
       />
-      <p v-if="!product.title" class="text-red-500 text-sm mt-1">Titre requis !</p>
-
+      <p v-if="!product.title" class="text-red-500 text-sm mt-1">
+        Titre requis !
+      </p>
     </div>
 
     <!-- Champ Description -->
@@ -37,8 +38,9 @@
         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="Description du produit"
       ></textarea>
-      <p v-if="!product.description" class="text-red-500 text-sm mt-1">Description requise !</p>
-
+      <p v-if="!product.description" class="text-red-500 text-sm mt-1">
+        Description requise !
+      </p>
     </div>
 
     <!-- Champ Prix -->
@@ -48,8 +50,8 @@
       >
       <input
         v-model="product.price"
-
         id="price"
+        type="number"
         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="Prix en euros"
         required
@@ -58,9 +60,9 @@
       <p v-if="product.price && (isNaN(product.price) || Number(product.price) <= 0)" class="text-red-500 text-sm mt-1">
         Le prix doit être un nombre positif valide.
       </p> -->
-      <p v-if="errors.price" class="text-red-500 text-sm mt-1">{{ errors.price }}</p>
-
-
+      <p v-if="errors.price" class="text-red-500 text-sm mt-1">
+        {{ errors.price }}
+      </p>
     </div>
 
     <!-- Champ Pourcentage de réduction -->
@@ -69,7 +71,7 @@
         >Pourcentage de réduction (%)</label
       >
       <input
-        v-model="discountPercentage"
+        v-model="product.discountPercentage"
         type="number"
         id="discountPercentage"
         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -130,8 +132,9 @@
         placeholder="Catégorie"
         required
       />
-      <p v-if="!product.category" class="text-red-500 text-sm mt-1">Catégorie requise !</p>
-
+      <p v-if="!product.category" class="text-red-500 text-sm mt-1">
+        Catégorie requise !
+      </p>
     </div>
 
     <!-- Champ Thumbnail -->
@@ -175,8 +178,13 @@
 <script setup>
 import { ref } from "vue";
 import { reactive, watch } from "vue";
+import { useProducts } from "../composables/manageProducts";
 
 // ***** DATA *****
+
+// Injection de l'état des produits
+const { addProduct } = useProducts();
+
 // Création de l'objet réactif product avec des valeurs par défaut
 const product = reactive({
   title: "",
@@ -192,13 +200,15 @@ const product = reactive({
 });
 
 // Utilisé pour saisir les URLs des images sous forme de texte
-const imageInput = ref("https://via.placeholder.com/600x600");
+const imageInput = ref("https://via.placeholder.com/600x600, https://via.placeholder.com/600x600");
+
 
 // Objet réactif pour les messages d'erreur
 const errors = reactive({
   title: "",
   description: "",
-  price: ""
+  price: "",
+  category: ""
 });
 
 // ***** WATCHERS *****
@@ -210,9 +220,7 @@ watch(
   (newValue) => {
     if (!newValue) {
       errors.price = "Le prix est requis !";
-    } else if (isNaN(newValue)) {
-      errors.price = "Le prix doit être un nombre !";
-    } else if (Number(newValue) <= 0) {
+    } else if (newValue <= 0) {
       errors.price = "Le prix doit être un nombre positif !";
     } else {
       errors.price = ""; // Réinitialise l'erreur si le prix est valide
@@ -221,16 +229,16 @@ watch(
 );
 
 // ***** METHODES *****
+
 // Méthode de soumission du formulaire
 const handleSubmit = () => {
-
   // Convertit imageInput en tableau d'URLs
   product.image = imageInput.value.split(",").map((url) => url.trim());
 
-  const messageAlert = `Produit ajouté : ${JSON.stringify(product, null, 2)}`;
-  alert(messageAlert);
+  // Fonction de soumission pour ajouter le produit
+  addProduct({ ...product, id: Date.now() }); // Utilisation d'un timestamp comme ID temporaire
 
-  // Réinitialisation de l'objet product et de imagesInput
+  // Réinitialisation du produit après soumission
   Object.assign(product, {
     title: "",
     description: "",
@@ -243,6 +251,7 @@ const handleSubmit = () => {
     thumbnail: "https://via.placeholder.com/800x600",
     image: [],
   });
+
   imageInput.value =
     "https://via.placeholder.com/600x600, https://via.placeholder.com/600x600";
 };

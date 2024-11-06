@@ -19,6 +19,10 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import { useProducts } from '../composables/manageProducts';
+
+// Injection de l'état des produits
+const { products } = useProducts();
 
 const props = defineProps({
   products: {
