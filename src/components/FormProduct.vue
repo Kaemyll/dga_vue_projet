@@ -172,6 +172,24 @@
     >
       Ajouter le produit
     </button>
+
+    <!-- Alerte de confirmation -->
+    <div
+      v-if="showAlert"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm text-center">
+        <h3 class="text-lg font-bold mb-4">Produit ajouté avec succès !</h3>
+        <p><strong>Nom :</strong> {{ product.title }}</p>
+        <p><strong>Prix :</strong> {{ product.price }} €</p>
+        <button
+          @click="closeAlert"
+          class="mt-4 bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600"
+        >
+          Retour à l'accueil
+        </button>
+      </div>
+    </div>
   </form>
 </template>
 
@@ -179,6 +197,7 @@
 import { ref } from "vue";
 import { reactive, watch } from "vue";
 import { useProducts } from "../composables/manageProducts";
+import router from "../router/index";
 
 // ***** DATA *****
 
@@ -200,16 +219,20 @@ const product = reactive({
 });
 
 // Utilisé pour saisir les URLs des images sous forme de texte
-const imageInput = ref("https://via.placeholder.com/600x600, https://via.placeholder.com/600x600");
-
+const imageInput = ref(
+  "https://via.placeholder.com/600x600, https://via.placeholder.com/600x600"
+);
 
 // Objet réactif pour les messages d'erreur
 const errors = reactive({
   title: "",
   description: "",
   price: "",
-  category: ""
+  category: "",
 });
+
+// État pour contrôler l'affichage de l'alerte
+const showAlert = ref(false);
 
 // ***** WATCHERS *****
 // Watchers pour la validation en temps réel
@@ -238,6 +261,9 @@ const handleSubmit = () => {
   // Fonction de soumission pour ajouter le produit
   addProduct({ ...product, id: Date.now() }); // Utilisation d'un timestamp comme ID temporaire
 
+  // Affiche l'alerte
+  showAlert.value = true;
+
   // Réinitialisation du produit après soumission
   Object.assign(product, {
     title: "",
@@ -254,5 +280,11 @@ const handleSubmit = () => {
 
   imageInput.value =
     "https://via.placeholder.com/600x600, https://via.placeholder.com/600x600";
+};
+
+// Méthode pour fermer l'alerte et rediriger vers l'accueil
+const closeAlert = () => {
+  showAlert.value = false;
+  router.push("/"); // Redirige vers l'accueil
 };
 </script>
