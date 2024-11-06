@@ -1,16 +1,11 @@
 <script setup>
 import { ref } from "vue";
-import MainNavbar from "../components/Navbar.vue";
 import MainView from "../components/MainView.vue";
-import MainFooter from "../components/Footer.vue";
-
 </script>
 
 <template>
-  <div className="flex flex-col min-h-screen">
-    <MainNavbar />
-    <MainView />
-    <MainFooter />
+  <div class="flex flex-col min-h-screen bg-blue-100">
+    <h1 class="text-2xl font-bold justify-center align-middle text-center">Bienvenue au DGA MARKET</h1>
   </div>
 </template>
 

@@ -11,22 +11,22 @@
         <button
           class="px-4 py-2 bg-gray-700 text-gray-300 rounded hover:bg-gray-600 hover:text-white transition-colors duration-200"
         >
-          Accueil
+          <router-link to="/"> Accueil </router-link>
         </button>
         <button
           class="px-4 py-2 bg-gray-700 text-gray-300 rounded hover:bg-gray-600 hover:text-white transition-colors duration-200"
         >
-          A propos
+          <router-link :to="{name: 'Boutique'}"> Boutique </router-link>
         </button>
         <button
           class="px-4 py-2 bg-gray-700 text-gray-300 rounded hover:bg-gray-600 hover:text-white transition-colors duration-200"
         >
-          Utilisateur
+          <router-link to="/formproduct"> Ajout Produit </router-link>
         </button>
         <button
           class="px-4 py-2 bg-gray-700 text-gray-300 rounded hover:bg-gray-600 hover:text-white transition-colors duration-200"
         >
-          Produits
+          <router-link to="/user"> Utilisateur </router-link>
         </button>
       </div>
 
@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 // État réactif pour suivre l'état de connexion
 const isLoggedIn = ref(false);

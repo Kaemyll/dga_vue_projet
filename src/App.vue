@@ -1,12 +1,13 @@
 <template>
   <div>
-    <!-- <Home /> -->
-    <ManageProduct />
+    <Navbar />
+    <router-view />
+    <Footer />
   </div>
 </template>
 
 <script setup>
-import Home from "./pages/Home.vue";
-import ManageProduct from "./pages/ManageProduct.vue";
+import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
 </script>
 
